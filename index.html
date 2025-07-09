@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Information Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .last-updated {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: #34495e;
+            margin: 20px 0 10px 0;
+            font-size: 1.3em;
+        }
+
+        .section p {
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .section ul {
+            margin-left: 20px;
+            color: #555;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            background: #3498db;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #27ae60;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #e74c3c;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Dynamic Information Hub</h1>
+            <p>Stay updated with the latest information, automatically refreshed via Claude AI</p>
+        </div>
+
+        <div class="last-updated">
+            <strong>Last Updated:</strong> <span id="lastUpdated">January 1, 2025 at 12:00 PM</span>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>
+                    <div class="icon">📋</div>
+                    Welcome to Your Information Hub
+                    <span class="status-badge">LIVE</span>
+                </h2>
+                <p>This page is designed to be your central source of truth for important information. It's automatically updated using the Claude AI API, ensuring you always have access to the most current content.</p>
+                
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Real-time updates via Claude AI API</li>
+                    <li>Responsive design that works on all devices</li>
+                    <li>Easy-to-read layout with clear sections</li>
+                    <li>Automated content generation and formatting</li>
+                    <li>Version control and update tracking</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>
+                    <div class="icon">📊</div>
+                    Current Status & Metrics
+                </h2>
+                <p>Here's the current status of various systems and key metrics:</p>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h3>System Status</h3>
+                        <p>All systems operational</p>
+                        <p><strong>Uptime:</strong> 99.9%</p>
+                    </div>
+                    <div class="card">
+                        <h3>Performance</h3>
+                        <p>Response time: 45ms</p>
+                        <p><strong>Load:</strong> Normal</p>
+                    </div>
+                    <div class="card">
+                        <h3>Updates</h3>
+                        <p>Last sync: 2 minutes ago</p>
+                        <p><strong>Status:</strong> Active</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>
+                    <div class="icon">📈</div>
+                    Recent Updates
+                </h2>
+                <p>The following updates have been made recently:</p>
+                
+                <ul>
+                    <li><strong>System Enhancement:</strong> Improved API response times by 15%</li>
+                    <li><strong>Content Update:</strong> Added new section for performance metrics</li>
+                    <li><strong>UI Improvement:</strong> Enhanced mobile responsiveness</li>
+                    <li><strong>Security:</strong> Updated SSL certificates and security protocols</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>
+                    <div class="icon">🔧</div>
+                    Technical Information
+                </h2>
+                <p>This page is powered by modern web technologies and Claude AI:</p>
+                
+                <h3>Technology Stack:</h3>
+                <ul>
+                    <li>Frontend: HTML5, CSS3, JavaScript</li>
+                    <li>AI Integration: Claude AI API</li>
+                    <li>Automation: Node.js update scripts</li>
+                    <li>Styling: Custom CSS with animations</li>
+                    <li>Responsive: Mobile-first design</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Powered by Claude AI | Auto-updated every hour | © 2025 Your Organization</p>
+        </div>
+    </div>
+
+    <script>
+        // Update the last updated timestamp
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleString();
+        
+        // Add smooth scrolling for any anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add loading animation for sections
+        const sections = document.querySelectorAll('.section');
+        sections.forEach((section, index) => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }, 200 * index);
+        });
+    </script>
+</body>
+</html>
