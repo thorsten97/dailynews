@@ -6,271 +6,292 @@
     <title>AI Summarized News</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 2em auto; max-width: 700px; background: #fafafa; color: #222; }
-        h1 { font-size: 2em; margin-bottom: 0.5em; }
-        .article { margin-bottom: 2em; padding-bottom: 1em; border-bottom: 1px solid #ddd; }
-        .headline { font-weight: bold; font-size: 1.2em; margin-bottom: 0.2em; }
-        .date { color: #666; font-size: 0.95em; margin-bottom: 0.4em; }
+        body { font-family: Arial, sans-serif; background: #fff; color: #111; max-width: 800px; margin: 0 auto; padding: 2em;}
+        h1 { font-size: 2em; margin-bottom: 1em; }
+        .tabs { display: flex; border-bottom: 2px solid #222; margin-bottom: 2em;}
+        .tab { padding: 0.7em 1.5em; cursor: pointer; border: none; background: none; color: #111; font-weight: bold; font-size: 1.1em; }
+        .tab.active { border-bottom: 3px solid #111; }
+        .article { margin-bottom: 2em; padding-bottom: 1em; border-bottom: 1px solid #ccc; }
+        .headline { font-weight: bold; font-size: 1.25em; margin-bottom: 0.2em; }
+        .date { color: #555; font-size: 0.9em; margin-bottom: 0.4em; }
         .summary { margin-bottom: 0.2em; }
         .updated { color: #888; font-size: 0.9em; margin-top: 2em; text-align: right; }
     </style>
 </head>
 <body>
-    <h1>Latest News Summaries</h1>
-    
-    <div class="article">
-        <div class="headline">Irans president skadad i israelisk attack</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Enligt en iransk rapport skadades Irans president Masoud Pezeshkian under ett israeliskt luftangrepp mot en byggnad där Irans nationella säkerhetsråd höll möte i Teheran den 16 juni. Sex bomber eller robotar träffade ingångarna till byggnaden, vilket ledde till strömavbrott. Trots detta kunde mötesdeltagarna ta sig ut via en nödutgång, men Pezeshkian och andra deltagare skadade då sina ben.</div>
+    <h1>AI-sammanfattade nyheter</h1>
+    <div class="tabs">
+        <button class="tab active" id="tab-local" onclick="showTab('local')">Lokala nyheter</button>
+        <button class="tab" id="tab-global" onclick="showTab('global')">Globala nyheter</button>
     </div>
-
+    <div id="news-local">
     <div class="article">
-        <div class="headline">Drunkningsolycka och våldsbrott i Sverige</div>
+        <div class="headline">Drunkningsolycka i Hällefors och våldsbrott i Karlstad</div>
         <div class="date">2025-07-13</div>
-        <div class="summary">En man har avlidit efter en drunkningsolycka i Sävsjön i Hällefors kommun. Polisen misstänker inget brott. I Karlstad hittades en man i 40-årsåldern död efter ett grovt våldsbrott under natten till söndagen. Ingen är misstänkt eller gripen i ärendet.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Spanien klar för kvartsfinal - möter Pia Sundhages Schweiz</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Spanien besegrade Italien med 3-1 i den sista gruppspelsmatchen i EM och är därmed klara för kvartsfinal. Där väntar Pia Sundhages Schweiz, som Spanien-tränaren menar går att slå även om det blir en tuff match. Italien tog tidigt ledningen men Spanien kvitterade snabbt och vann sedan matchen komfortabelt.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Almgren bröt i rekordförsök på grund av kramp</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Andreas Almgren var ute efter att förbättra sitt Europarekord på 5 000 meter under Diamond League-galan i Monaco. Efter att ha legat under rekordtiden bröt han loppet på grund av kramp. Almgren säger att det inte är något allvarligt och att han tror sig kunna börja jogga igen om några dagar. Det viktiga loppet för honom är i september.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Duplantis försökte på världsrekord i Monaco</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Armand Duplantis säkrade segern i Diamond League-galan i Monaco genom att klara 6,05 meter. Därefter gjorde han tre misslyckade försök på nya världsrekordhöjden 6,29 meter. Duplantis tävlade med en ny stav men var inte helt nöjd med resultatet, då han kände sig lite trött efter resor och tävlingar. Trots motvind i rekordförsöken var Duplantis ändå nöjd med tävlingen.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">President Stubb tävlade i hemlighet - kom tvåa i triathlon</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Finlands president Alexander Stubb deltog under fredagen i en triathlon-tävling i Jorois under signaturen "AS". Trots att han höll sin medverkan hemlig, visade det sig att den 57-årige presidenten klarade av 750 meters simning, 20 kilometers cykling och 5 kilometers löpning på tiden 1.04,19, vilket räckte till en andraplats i tävlingen.</div>
+        <div class="summary">En man har avlidit efter en drunkningsolycka i Sävsjön i Hällefors kommun. I Karlstad hittades en man i 40-årsåldern död efter ett grovt våldsbrott under natten till söndagen. Polisen misstänker inget brott i drunkningsfallet, men ingen är misstänkt eller gripen i våldsbrottet.</div>
     </div>
 
     <div class="article">
         <div class="headline">Svensk stjärna nära avstängning i EM</div>
         <div class="date">2025-07-13</div>
-        <div class="summary">Kosovare Asllani, Sveriges lagkapten, är bara ett kort från avstängning i EM. Två varningar under turneringen leder till att hon måste sitta över nästa match. Tränarna kommer att fundera på hur de ska hantera situationen, men målet är att Asllani ska kunna spela i så många matcher som möjligt under slutspelet.</div>
+        <div class="summary">Kosovare Asllani, Sveriges lagkapten, är bara ett kort från avstängning i EM. Detta innebär att hon måste vara försiktig i nästa match mot Tyskland för att undvika ytterligare varningar. Trots detta kommer det inte att påverka hur tränarna tänker inför matchen.</div>
     </div>
 
     <div class="article">
-        <div class="headline">Svenska herrstafettlaget diskades - VM-fiasko</div>
+        <div class="headline">Släkten värst när Elfsborg vann derbyt</div>
         <div class="date">2025-07-13</div>
-        <div class="summary">Sveriges herrlandslag i orientering floppade i VM-stafetten efter grova misstag. Trots att det såg ut som att Max Peter Bejmer skulle ta ett bronsmedalj för Sverige, gick allt snett på slutet och både Finland och Frankrike passerade. Sverige diskades i mål som femma. Guldet togs av Norge med Kasper Fosser, medan Schweiz tog silvret.</div>
+        <div class="summary">Rasmus Wikström, fostrad i IFK Göteborg, avgjorde derbyt mot sin gamla klubb när Elfsborg vann med 2-1. Mittbacken stod för både kvittering och avgörande mål inom loppet av fem minuter. &quot;På något konstigt sätt så brukar det ju bli så - släkten är värst,&quot; säger Wikström.</div>
     </div>
 
     <div class="article">
-        <div class="headline">Tove Alexandersson gör historisk milstolpe i VM-guld</div>
+        <div class="headline">Olsens succé i MFF-comebacken</div>
         <div class="date">2025-07-13</div>
-        <div class="summary">Svensk succé i orienterings-VM där damlaget tog guld i stafetten. Tove Alexandersson sprang hem guldet på slutsträckan, 2.28 före Norge. Guldet var Alexanderssons 23:e VM-guld, vilket tangerar Simone Nigglis rekordnotering. Alexandersson säger till SVT Sport att det var jättekul att de fick till ett så bra lopp.</div>
+        <div class="summary">Det blev en blandad comeback för Robin Olsen i Malmö FF:s 3-1-seger mot IFK Norrköping. Den 35-årige målvakten var nära att hålla nollan, men låg bakom ett av lagets mål. Trots segern ligger MFF på femte plats i allsvenskan, sju poäng bakom ledande Mjällby.</div>
     </div>
 
     <div class="article">
-        <div class="headline">Swiatek historisk segrare i Wimbledon</div>
+        <div class="headline">Sverige krossade Tyskland - vidare till kvartsfinal</div>
         <div class="date">2025-07-13</div>
-        <div class="summary">Iga Swiatek vann sin första Wimbledon-titel efter en överlägsen finalseger mot Amanda Anisimova med siffrorna 6-0, 6-0. Detta är den första gången sedan 1911 som en damfinal i Wimbledon slutat med dessa siffror. Swiatek, som är 21 år gammal, är den yngsta vinnaren på 114 år. Hon beskriver segern som overklig och säger att hon inte ens drömt om att kunna stå som vinnare här. Anisimova var besviken och grät efter matchen, men tackade publiken för deras stöd.</div>
+        <div class="summary">Sverige vann överlägset mot Tyskland med 4-1 i EM-slutspelet och är därmed vidare till kvartsfinal. Trots att Tyskland fick en spelare utvisad i första halvlek kunde Sverige kontrollera matchen och göra flera mål, bland annat genom Fridolina Rolfö från straffpunkten.</div>
     </div>
 
     <div class="article">
-        <div class="headline">Släkten värst när Wikström avgjorde derbyt</div>
+        <div class="headline">Kraftig ökning av elpriser i Sverige</div>
         <div class="date">2025-07-13</div>
-        <div class="summary">Rasmus Wikström, fostrad i IFK Göteborg, avgjorde derbyt mot sin gamla klubb när Elfsborg vann med 2-1 över Blåvitt. Mittbacken, som hade gjort tre allsvenska mål tidigare i karriären, nickade in både kvitteringen och det avgörande målet inom loppet av fem minuter. "På något konstigt sätt så brukar det ju bli så - släkten är värst", säger Wikström.</div>
+        <div class="summary">Elpriserna i Sverige har ökat kraftigt under de senaste månaderna. Priserna har fördubblats jämfört med samma period förra året, vilket har fått stor påverkan på hushållens elkostnader. Experter menar att den ökade efterfrågan på el i kombination med begränsad elproduktion är de främsta orsakerna till de höga elpriserna.</div>
     </div>
 
     <div class="article">
-        <div class="headline">Olsens comeback i MFF imponerar trots målinsläpp</div>
+        <div class="headline">Fartyg körde in i kaj i centrala Stockholm</div>
         <div class="date">2025-07-13</div>
-        <div class="summary">Robin Olsen gjorde comeback i Malmö FF och var nära att hålla nollan, men låg bakom ett av lagets mål i 3-1-segern mot IFK Norrköping. Trots detta var Olsen nöjd med sin insats och beskrev det som en speciell upplevelse att återvända till planen. Segern innebär att Malmö närmar sig toppen i Allsvenskan, där de nu ligger femma, sju poäng bakom ledande Mjällby.</div>
+        <div class="summary">Ett fartyg med 204 passagerare på en brunchkryssning körde in i en kaj vid Kastellholmen i centrala Stockholm. Ingen ombord ska ha skadats fysiskt. Enligt affärsområdeschefen uppstod ett tekniskt fel som gjorde att båten inte gick att styra. Incidenten är den andra på mindre än en vecka.</div>
     </div>
 
     <div class="article">
-        <div class="headline">Tonen hårdnar mellan Sporting och Gyökeres</div>
+        <div class="headline">Biolog varnar: Sluta kissa i havet</div>
         <div class="date">2025-07-13</div>
-        <div class="summary">Viktor Gyökeres framtid i Sporting har varit osäker hela sommaren. En konflikt mellan honom och klubben eskalerar nu, och Sportings ordförande Frederico Varandas markerar tydligt mot Gyökeres frånvaro från träningar. Varandas säger att allt kommer att lösas när transferfönstret stänger, med rejäla böter och en ursäkt till gruppen från Gyökeres.</div>
+        <div class="summary">Flera experter uppmanar badande personer att inte tömma blåsan i hav och sjöar eftersom människans urin kan bidra till övergödning. Enligt en biolog kan en liter urin göda upp fem till sju kilo alger, vilket stör ekosystemet. Övergödning i haven har dock fler källor än enbart kiss, där jordbruken och skogsavverkningen är ett större problem.</div>
     </div>
 
     <div class="article">
-        <div class="headline">Rolfö och Asllani skadade i EM-kvartsfinal</div>
+        <div class="headline">Skjutning mot lägenhet i Örebro</div>
         <div class="date">2025-07-13</div>
-        <div class="summary">Fridolina Rolfö och Kosovare Asllani tvingades lämna planen med skador under Sveriges EM-kvartsfinal mot Schweiz. Rolfö spelade från start för första gången i turneringen och hann sätta en straff innan hon utgick med en knäskada. Även Asllani fick lämna planen efter en hård närkamp och fick sin axel tejpad, men hon känner sig redo för torsdagens kvartsfinal.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Smilla Holmberg om EM-succén: "Minnesluckor"</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Smilla Holmberg var en stor överraskning i den svenska EM-truppen. I matchen mot Tyskland gjorde hon sitt första mål för Blågult. Holmberg beskriver händelsen som mycket känslofylld, men säger att hon knappt kommer ihåg den och har minnesluckor.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Sverige krossade Tyskland - vidare till EM-kvartsfinal</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Sverige gick vidare till kvartsfinal i EM efter en övertygande 4-1-seger mot Tyskland. Trots att Carlotta Wamser blev utvisad i första halvlek kunde Sverige vinna komfortabelt. Fridolina Rolfö gjorde 3-1 på straff och Smilla Holmberg gjorde 2-1 efter ett eget genombrott. Sverige möter tvåan i grupp D, troligen England, i kvartsfinal på torsdag.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Messi avgjorde själv när Inter Miami besegrade Nashville</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Lionel Messi hade en stor show när Inter Miami besegrade Nashville i MLS. Messi inledde målskyttet med en drömfrispark i den 17:e minuten. Nashville kvitterade sedan, men Messi kunde avgöra till 2-1 efter en målvaktsbjudning. Fullträffarna innebär att Messi leder skytteligan i MLS på 16 mål. "Han är ledaren. Han visar oss vägen", säger Inter Miami-tränaren Javier Mascherano.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Böcker hotas av brödbaggar på ungersk världsarvsbiblitotek</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Tusentals hundraåriga böcker har plockats bort från bibliotekshyllorna i ett medeltida kloster i Ungern för att rädda dem från angrepp av skalbaggar som kallas brödbaggar. Under en rutinkontroll har en ovanligt omfattande infektion upptäckts, och en desinfektionsprocess ska nu inledas på Pannonhalma Archabbeys bibliotek, som finns på FN-organet Unescos världsarvslista.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Bit av Mars till salu på auktion</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">En 25 kilo tung meteorit från Mars, den största som hittats på jorden, kommer att auktioneras ut på Sotheby's vetenskapliga satsning Geek Week på onsdag. Meteoriten, som hittades i Niger i november 2023, tros ha blåst av Mars yta efter ett asteroidnedslag och sedan färdats 225 miljoner kilometer till jorden. Stenen väntas klubbas för mellan 19 och 38 miljoner kronor.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">"Utrikesministern: USA blir förlorarna i handelskriget"</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Utrikeshandelsminister Benjamin Dousa (M) säger till TT att tullbeskedet från USA är en kraftig eskalering. Dousa menar att USA kommer att bli "förlorarna" i handelskriget. EU-ländernas handelsministrar har kallats in till ett möte i Bryssel för att diskutera hur de ska hantera situationen framåt. EU-kommissionens ordförande Ursula von der Leyen säger att EU kommer att svara med motåtgärder, och den svenska regeringen ställer sig bakom EU:s budskap.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Kristersson beklagar Trumps tullbesked</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Donald Trumps beslut om 30-procentiga tullar på varor från EU möts av kritik. Statsminister Ulf Kristersson (M) beklagar beslutet och säger att regeringen står bakom EU-kommissionens ordförande Ursula von der Leyens uttalande. Von der Leyen säger att EU kommer att fortsätta arbeta för ett handelsavtal med USA, men också vidta nödvändiga åtgärder för att skydda EU:s intressen.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Trump hotar EU med 30-procentiga tullar</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">USA:s president Donald Trump meddelar på sin plattform Truth Social att USA kommer att införa 30-procentiga tullar på import från EU från och med den 1 augusti. Sedan tidigare har USA generella tullar på 10 procent på import från EU samt högre sektortullar på bland annat bilar, bildelar, stål och aluminium. Enligt Trumps uttalande kommer även Mexiko att drabbas av 30-procentiga tullar.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Nordkorea lovar Ryssland villkorslöst stöd i Ukraina-kriget</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Nordkoreas ledare Kim Jong-Un har efter ett möte med den ryske utrikesministern Sergej Lavrov lovat Ryssland sitt fulla stöd i anfallskriget mot Ukraina. Kim ska ha uttryckt en "fast övertygelse" om att den ryska armén och folket kommer att segra och "uppnå den heliga saken att försvara landets värdighet och grundläggande intressen". Mötet ägde rum i den nordkoreanska turistorten Wonsan.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Blodbad i östra Kongo - 66 dödade i islamistattack</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">En islamistisk rebellgrupp, ADF, har dödat 66 människor i östra Kongo-Kinshasa enligt lokala myndigheter. Attacken skedde i området Irumu som gränsar mot Uganda. Offren, däribland kvinnor, dödades med machete. Attacken misstänks vara en hämnd för en gemensam bombkampanj som styrkor från Kongo och Uganda utför mot ADF, en islamistgrupp från Uganda med kopplingar till IS som opererar på båda sidor av gränsen.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Fånge rymde i medfånges väska från fängelse i Frankrike</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">En 20-årig man har rymt från ett fängelse utanför Lyon i Frankrike genom att gömma sig i en medfånges väska när denne lämnade fängelset. Mannen avtjänade straff för flera brott och utreds även för kopplingar till organiserad brottslighet. Kriminalvården har inlett en internutredning och åklagare ska utreda händelsen.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Vapenvila mellan Israel och Hamas nära sammanbrott</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Enligt palestinska tjänstemän är samtalen om en vapenvila mellan Israel och terrorstämplade Hamas på väg att bryta samman. De båda sidorna är djupt oeniga i flera frågor, bland annat hur det humanitära biståndet till Gaza ska delas ut och omfattningen av det israeliska militära tillbakadragandet. Den palestinska sidan vill nu att USA sätter press på Israel att göra eftergifter, annars kan samtalen i Doha kollapsa.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Bosättare dödade två palestinier på Västbanken</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Två palestinska män i 20-årsåldern har dödats av israeliska bosättare i närheten av staden Sinjil på ockuperade Västbanken, enligt den palestinska hälsomyndigheten. Den israeliska militären IDF säger att israeler utsattes för stenkastning i området och att det därefter uppstod en "våldsam konfrontation". En av de dödade männen var amerikansk medborgare och hans familj kräver att USA:s utrikesdepartement utreder händelsen.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">FN varnar för kritisk bränslebrist i Gaza</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">FN varnar för att bränslebristen i Gaza har nått kritiska nivåer, vilket hotar att öka lidandet för befolkningen. Sju FN-organ skriver att sjukhus, vattensystem, reningsverk, ambulanser, bagerier och alla humanitära insatser inte kan fungera utan bränsle. De kallar bränsle en "förutsättning för överlevnad i Gaza". Trots att FN lyckades föra in bränsle i Gaza för första gången på 130 dagar på fredagen, menar man att det bara var en "bråkdel" av det som behövs.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Blodigt våld i Gaza - 27 dödade i israeliska attacker</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Minst 27 personer har dödats i nya israeliska attacker i Gaza natten till söndag. Sex av dem dödades vid en utdelningsplats för dricksvatten. Lördagen var en av de blodigaste dagarna på Gazaremsan på länge, med minst 70 dödade och 208 skadade enligt Hamas-kontrollerade hälsomyndigheter. Sjukhus i Gaza uppskattar att dödssiffran är ännu högre, omkring 129 personer, varav 33 som stod i kö för att få hjälp.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Blandade börsresultat i veckoavslutningen</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">De ledande börsindexen i Tokyo, Stockholm, Frankfurt, London och New York stängde på fredag med blandade resultat. Nikkei-index i Tokyo föll med 0,2 procent, OMXSPI-index i Stockholm tappade 1,3 procent, DAX-index i Frankfurt backade 0,9 procent, FTSE-index i London sjönk 0,4 procent, Dow Jones-index i New York minskade 0,6 procent och Nasdaq-index i New York gick ner 0,2 procent.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Kraftig ökning av antalet cykelstölder i Stockholms innerstad</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Enligt en ny rapport från Stockholms Stad har antalet cykelstölder i innerstaden ökat kraftigt under det senaste året. Siffrorna visar en ökning på över 30 procent jämfört med föregående år. Polisen uppmanar cyklister att vidta extra försiktighetsåtgärder för att skydda sina cyklar, såsom att använda godkända lås och parkera dem på övervakade platser.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Fartyg kraschar in i kaj i centrala Stockholm</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Ett fartyg med 204 passagerare på en brunchkryssning körde in i en kaj vid Kastellholmen i centrala Stockholm på lördagen. Ingen ombord ska ha skadats fysiskt. Enligt affärsområdeschefen uppstod ett tekniskt fel som gjorde att båten inte gick att styra. Incidenten är den andra på mindre än en vecka, då ett annat fartyg med 150 passagerare körde in i en kaj vid Nacka strand, men de två händelserna har inget samband.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Biolog uppmanar: Sluta kissa i havet</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">Flera experter, däribland biologen Anna Björn från Skansens Östersjöcentrum, varnar för att människors urin i havet och sjöar kan bidra till övergödning. En liter urin kan göda upp fem till sju kilo alger, vilket leder till snabb tillväxt av fintrådiga alger som stör ekosystemet. Övergödning har dock flera källor, där jordbruk och skogsavverkning utgör ett större problem än urin enligt Björn.</div>
-    </div>
-
-    <div class="article">
-        <div class="headline">Skottlossning mot lägenhet i Örebro - ingen skadad</div>
-        <div class="date">2025-07-13</div>
-        <div class="summary">En lägenhet i ett flerfamiljshus i bostadsområdet Brickebacken i Örebro besköts sent på lördagskvällen. Flera personer befann sig i bostaden under skottlossningen, men ingen person kom till skada. Polisen betecknar det som ren tur att ingen träffades. En förundersökning är inledd, med tre fall av mordförsök samt grovt vapenbrott.</div>
+        <div class="summary">En lägenhet i Örebro besköts sent på lördagskvällen, men ingen person kom till skada. En förundersökning är inledd för mordförsök och grovt vapenbrott.</div>
     </div>
 
     <div class="article">
         <div class="headline">SMHI utökar varning om skyfall i Svealand och södra Norrland</div>
         <div class="date">2025-07-13</div>
-        <div class="summary">SMHI har utökat sin varning för skyfallsliknande regn i delar av Svealand och södra Norrland under söndagen. Regn väntas dra in över området med mängder mellan 30 och 50 mm. Lokal åska kan förekomma. Gul varning har utfärdats för norra Stockholms län, Uppsala, Västmanland, norra Örebro, Dalarna och södra Gävleborg. Regnet kan orsaka översvämningar på vägar och i viadukter, samt drabba källare. SMHI varnar även för värme i mellersta och norra Norrland med temperaturer upp till 30 grader.</div>
+        <div class="summary">SMHI har utfärdat en gul varning för skyfallsliknande regn i delar av Svealand och södra Norrland under söndagen. Regn väntas dra in med mängder mellan 30 och 50 mm, och det finns risk för lokal åska. Regnet kan orsaka översvämningar på vägar och i viadukter, samt skador i källare.</div>
     </div>
 
     <div class="article">
-        <div class="headline">Åskväder drabbar Gävle - tre hus i brand och översvämningar</div>
+        <div class="headline">Kraftigt åskoväder drabbar Gävle</div>
         <div class="date">2025-07-13</div>
-        <div class="summary">Ett kraftigt åskoväder drog in över Gävle under natten till söndagen. Tre hus började brinna efter upprepade blixtnedslag och det häftiga regnet orsakade mindre översvämningar. Räddningstjänsten beskriver det som en körigt period under natten. Polisen rapporterar också om flera fordon som råkat ut för vattenplaning, men inget allvarligt.</div>
+        <div class="summary">Ett kraftigt åskoväder drog in över Gävle under natten till söndagen. Tre hus började brinna efter upprepade blixtnedslag och det häftiga regnet orsakade mindre översvämningar. Flera fordon råkade ut för vattenplaning, men enligt polisen var det ingenting allvarligt.</div>
     </div>
 
     <div class="article">
-        <div class="headline">Tragisk olycka - man påkörd av polisbil i Fagersta</div>
+        <div class="headline">Man död efter påkörning av polisbil i Fagersta</div>
         <div class="date">2025-07-13</div>
-        <div class="summary">En man har avlidit efter att ha blivit påkörd av en polisbil i centrala Fagersta strax efter midnatt. Mannen avled på platsen och uppgifterna kring händelsen är knapphändiga. Polisen har startat en förundersökning gällande vållande till annans död, som leds av åklagare vid Särskilda åklagarkammaren.</div>
+        <div class="summary">En man har avlidit efter att ha blivit påkörd av en polisbil i centrala Fagersta strax efter midnatt. Uppgifterna kring händelsen är knapphändiga, men polisen har inlett en förundersökning gällande vållande till annans död.</div>
     </div>
 
     <div class="article">
         <div class="headline">Kvinna omkom när träd föll över bil på riksväg 26</div>
         <div class="date">2025-07-12</div>
-        <div class="summary">En kvinna i 70-årsåldern omkom efter att ett träd fallit över vägbanan och träffat en bil på riksväg 26 i Filipstad. Ytterligare en person fanns i bilen, men det finns inga uppgifter om personens tillstånd. Polisen kommer att inleda en förundersökning om framkallande av fara för annan för att utreda hur olyckan gått till.</div>
+        <div class="summary">En kvinna i 70-årsåldern omkom efter att ett träd fallit över vägbanan och träffat en bil på riksväg 26 i Filipstad. Ytterligare en person fanns i bilen, men det finns inga uppgifter om personens tillstånd. Polisen kommer att inleda en förundersökning för att utreda olyckan.</div>
     </div>
 
     <div class="article">
         <div class="headline">Man gripen efter skjutning i Vårby</div>
         <div class="date">2025-07-12</div>
-        <div class="summary">En man i 25-årsåldern har skjutits med flera skott i Vårby söder om Stockholm på fredagskvällen. En man har gripits misstänkt för inblandning i händelsen. Den skottskadade mannen bedöms vara allvarligt men inte livshotande skadad.</div>
+        <div class="summary">En man i 25-årsåldern har skjutits med flera skott i Vårby söder om Stockholm. En man har gripits och den skottskadade mannen bedöms vara allvarligt men inte livshotande skadad.</div>
     </div>
 
     <div class="article">
-        <div class="headline">Dubbelt dödsdrama i Alvesta - ännu en man död</div>
+        <div class="headline">Ytterligare dödsfall i Alvesta - polisen utreder</div>
         <div class="date">2025-07-12</div>
-        <div class="summary">Ytterligare en man har hittats död i samma fastighet där en man i 35-årsåldern sköts till döds i Alvesta under fredagskvällen. Skjutningen skedde i en trappuppgång i ett flerfamiljshus. Senare under kvällen hittades en man i samma ålder död i en lägenhet på samma adress. Polisen söker inte efter fler inblandade i händelsen, men relationen mellan de båda männen är oklar.</div>
+        <div class="summary">Ytterligare en man har hittats död i samma fastighet där en man i 35-årsåldern sköts till döds i Alvesta tidigare under fredagskvällen. Polisen söker i nuläget inte efter fler inblandade och relationen mellan de båda männen är oklar.</div>
+    </div></div>
+    <div id="news-global" style="display:none;">
+    <div class="article">
+        <div class="headline">Skyfall i Spanien - två saknas</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Två personer saknas i Katalonien efter att den spanska regionen drabbats av skyfall på lördagen. Runt 100 millimeter regn föll inom loppet av några timmar nära Barcelona, vilket ledde till att all tågtrafik stoppades och ett sjukhus i Barcelona svämmades över.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Irans president skadad i attack</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Enligt en iransk rapport skadades Irans president Masoud Pezeshkian under ett israeliskt luftangrepp mot en byggnad där Irans nationella säkerhetsråd höll möte i Teheran den 16 juni. Sex bomber eller robotar träffade ingångarna till byggnaden, vilket ledde till strömavbrott, men mötesdeltagarna kunde ta sig ut via en nödutgång. Pezeshkian och andra deltagare skadade då sina ben.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Spanien klar för kvartsfinal - möter Schweiz</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Spanien besegrade Italien med 3-1 i den sista gruppspelsmatchen i EM och är därmed klara för kvartsfinal. Där väntar Pia Sundhages Schweiz, som Spanien får svårt att besegra enligt Sundhage själv.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Almgren bröt i rekordförsök: Kramp</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Andreas Almgren var ute efter att slå sitt eget Europarekord på 5 000 meter under Diamond League-galan i Monaco. Efter att ha legat under rekordfarten bröt dock svensken loppet på grund av kramp. Almgren säger att det inte är något allvarligt och att det viktiga loppet kommer i september.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Duplantis försökte på världsrekord i Monaco</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Armand Duplantis säkrade segern i Diamond League-galan i Monaco genom att klara 6,05 meter. Därefter gjorde han tre misslyckade försök på nya världsrekordhöjden 6,29 meter. Duplantis tävlade med en ny stav och menade att det kändes bra, även om det inte var helt perfekt efter många resor och motvind under rekordförsöken.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">President tävlade i hemlighet - slutade tvåa i triathlon</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Finlands president Alexander Stubb deltog under fredagen i en triathlon-tävling i Jorois, Finland. Stubb anmälde sig under signaturen &quot;AS&quot; och slutade på en andraplats i tävlingen.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Svenska herrar diskade i VM-stafett</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Sveriges herrlandslag i orientering floppade i VM-stafetten efter grova misstag, vilket ledde till att de diskades. Avslutaren Max Peter Bejmer menar att det är det största nederlaget i hans karriär. Trots att Bejmer såg ut att kunna ta ett bronsmedalj, gick allt snett på slutet och både Finland och Frankrike passerade Sverige som slutade femma men diskades senare. Guldet togs av Norge.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Svenskt guld - milstolpe för Tove</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Svenskt damlag tog guld i stafetten i orienterings-VM. Tove Alexandersson sprang hem guldet på slutsträckan och nådde därmed en historisk milstolpe genom att ta sitt 23:e VM-guld, vilket tangerar Simone Nigglis rekordnotering.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Swiatek skriver historia med Wimbledon-seger</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Iga Swiatek vann Wimbledon-finalen mot Amanda Anisimova med siffrorna 6-0, 6-0. Detta är den första gången sedan 1911 som en damfinal i Wimbledon slutar med dessa siffror. Swiatek är den första polska spelaren som vinner Wimbledon.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Tonen hårdnar mot Gyökeres i Sporting</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Viktor Gyökeres framtid i Sporting har varit osäker hela sommaren. En konflikt mellan honom och klubben eskalerar nu, och Sportings ordförande Frederico Varandas markerar tydligt mot Gyökeres frånvaro från träningar. Varandas säger att allt kommer att lösas när transferfönstret stänger, med rejäla böter och en ursäkt till gruppen.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Skadade svenska stjärnor i EM-kvarten</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Fridolina Rolfö och Kosovare Asllani, två av Sveriges nyckelspelare, tvingades lämna planen med skador under Sveriges EM-kvartsfinal mot Schweiz. Rolfö spelade från start men utgick i paus med ett bandagerat knä, medan Asllani fick axeln tejpad efter en hård närkamp. Trots skadorna känner de båda inga större oro inför torsdagens kvartsfinal.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Smilla efter succén: Minnesluckor</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Smilla Holmberg, den stora överraskningen i den svenska EM-truppen, gjorde sitt första mål för Blågult i matchen mot Tyskland. Den 18-åriga Hammarbybacken säger att hon knappt kommer ihåg händelsen och har minnesluckor.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Messi avgjorde själv när Inter Miami besegrade Nashville</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Lionel Messi hade en stor show när Inter Miami besegrade Nashville i MLS. Messi inledde målskyttet med en drömfrispark och avgjorde sedan matchen till 2-1 efter en målvaktsbjudning. Fullträffarna innebär att Messi leder skytteligan i MLS på 16 mål.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Brödbaggar hotar världsarvsbibbla i Ungern</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Tusentals hundraåriga böcker i ett medeltida kloster i Ungern har plockats bort från hyllorna för att räddas från angrepp av brödbaggar. Skalbaggarnas angrepp har upptäckts under en rutinkontroll och en desinfektionsprocess ska nu inledas på Pannonhalma Archabbeys bibliotek, som finns på Unescos världsarvslista.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Bit av Mars till salu på auktion</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">En 25 kilo tung meteorit från Mars, den största som hittats på jorden, auktioneras ut på Sotheby&#39;s vetenskapliga satsning Geek Week. Meteoriten, som hittades i Saharaöknen i Niger 2023, tros ha blåst av Mars yta efter ett asteroidnedslag och färdats 225 miljoner kilometer till jorden. Meteoriten väntas klubbas för mellan 19 och 38 miljoner kronor.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Dousa (M): USA blir förlorarna i handelskriget</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Utrikeshandelsminister Benjamin Dousa (M) säger att tullbeskedet från USA är en kraftig eskalering och att USA kommer att bli &quot;förlorarna&quot; i handelskriget. EU-kommissionen säger att EU kommer att svara med motåtgärder, och den svenska regeringen ställer sig bakom EU:s budskap.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Kristersson beklagar Trumps tullbesked</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Donald Trumps beslut om 30-procentiga tullar på varor från EU möts av kritik. Statsminister Ulf Kristersson (M) säger att regeringen &quot;beklagar&quot; USA:s beslut. EU-kommissionens ordförande Ursula von der Leyen säger att EU kommer att fortsätta arbeta för ett handelsavtal med USA och vidta nödvändiga åtgärder för att skydda EU:s intressen.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">USA inför 30-procentiga tullar på EU</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">USA:s president Donald Trump meddelar att USA kommer att införa 30-procentiga tullar på import från EU från och med den 1 augusti. Sedan tidigare har USA generella tullar på 10 procent och sektortullar på betydligt högre nivåer på bland annat bilar, bildelar, stål och aluminium från EU. Även Mexiko beläggs med 30-procentiga tullar enligt Trump.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Nordkorea lovar Ryssland villkorslöst stöd i Ukraina</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Nordkoreas ledare Kim Jong-Un har lovat Ryssland sitt fulla stöd i anfallskriget mot Ukraina efter ett möte med den ryske utrikesministern Sergej Lavrov. Kim ska ha uttryckt en &quot;fast övertygelse&quot; om att den ryska armén och folket kommer att segra.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Blodbad i Kongo - 66 dödade i islamistattack</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">En islamistisk rebellgrupp har dödat 66 människor i östra Kongo-Kinshasa, enligt lokala myndigheter. ADF-rebeller dödade civila i området Irumu som gränsar mot Uganda. Attacken misstänks vara en hämnd för en bombkampanj som styrkor från Kongo och Uganda utför gemensamt.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Fånge rymde i medfånges väska från fängelse utanför Lyon</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">En 20-årig man som avtjänade straff för flera brott, däribland kopplingar till organiserad brottslighet, har rymt från ett fängelse utanför Lyon i Frankrike. Mannen gömde sig i en medfånges väska när denne skulle lämna fängelset. Kriminalvården har inlett en internutredning och åklagare ska utreda händelsen.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Vapenvila mellan Israel och Hamas på väg att bryta samman</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Enligt palestinska tjänstemän är samtalen om en vapenvila mellan Israel och Hamas på väg att bryta samman. De båda sidorna är djupt oeniga i flera frågor, bland annat hur det humanitära biståndet till Gaza ska delas ut och omfattningen av det israeliska militära tillbakadragandet. Den palestinska sidan vill nu att USA sätter press på Israel att göra eftergifter, annars kan samtalen i Doha kollapsa.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Dödliga sammandrabbningar mellan bosättare och palestinier på Västbanken</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Två palestinska män i 20-årsåldern har dödats av israeliska bosättare i närheten av staden Sinjil på ockuperade Västbanken, enligt den palestinska hälsomyndigheten. Den israeliska militären uppger att israeler utsattes för stenkastning i området och att det därefter uppstod en &quot;våldsam konfrontation&quot;. En av de dödade männen var amerikansk medborgare och hans familj kräver att USA:s utrikesdepartement utreder händelsen.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">FN varnar för bränslebrist i Gaza</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">FN varnar för att bränslebristen i Gaza har nått kritiska nivåer, vilket hotar att öka lidandet för befolkningen. Sju FN-organ skriver att sjukhus, vattensystem, reningsverk, ambulanser, bagerier och alla humanitära insatser inte kan fungera utan bränsle. De menar att det är en förutsättning för överlevnad i Gaza.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Nya dödliga attacker i Gaza - 27 omkomna</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Minst 27 personer har dödats i nya israeliska attacker i Gaza natten till söndag. Sex av dem dödades vid en utdelningsplats för dricksvatten. Totalt uppskattas 129 personer ha dödats under lördagen i Gaza, varav 33 som stod i kö för att få hjälp.</div>
+    </div>
+
+    <div class="article">
+        <div class="headline">Blandade börssiffror i Europa och USA</div>
+        <div class="date">2025-07-13</div>
+        <div class="summary">Aktiemarknaderna i Tokyo, Stockholm, Frankfurt, London och New York noterade nedgångar på fredagen. Nikkei-index i Tokyo föll med 0,2 procent, OMXSPI-index i Stockholm sjönk med 1,3 procent, DAX-index i Frankfurt backade med 0,9 procent, FTSE-index i London minskade med 0,4 procent, Dow Jones-index i New York föll med 0,6 procent och Nasdaq-index i New York gick ner med 0,2 procent.</div>
     </div>
 
     <div class="article">
         <div class="headline">Abdos toppkrets greps i Turkiet</div>
         <div class="date">2025-07-12</div>
-        <div class="summary">Då Ismail Abdo, även känd som "Jordgubben", greps i Turkiet greps även 18 andra personer, varav två tillhör Abdos toppkrets. Den ena, en 34-årig man med turkiskt medborgarskap, misstänks för förberedelse till mord och bedrägerier mot äldre. Den andra, en 23-årig man, sägs vara ledande i det så kallade Zero-nätverket och ligger bakom en stor del av inflödet av narkotika till Sverige.</div>
+        <div class="summary">Då Ismail Abdo, även känd som &quot;Jordgubben&quot;, greps i Turkiet greps även 18 andra personer, varav två tillhör Abdos toppkrets. En av dem, en 34-årig man med turkiskt medborgarskap, kommer inte att lämnas ut till Sverige trots att han är misstänkt för bland annat förberedelse till mord och bedrägerier mot äldre. Den andra gängtoppen, en 23-årig man, sägs vara ledande i det så kallade Zero-nätverket och ligger bakom en stor del av inflödet av narkotika till Sverige.</div>
     </div>
 
     <div class="article">
         <div class="headline">Affärsmannen Olof K Gustafsson kan få kortare straff efter erkännande</div>
         <div class="date">2025-07-12</div>
-        <div class="summary">Affärsmannen Olof K Gustafsson, känd för att ha drivit företaget Escobar Inc tillsammans med Roberto Escobar, bror till den colombianska knarkkungen Pablo Escobar, förväntas få ett betydligt kortare straff än de ursprungliga 2 050 år han stod åtalad för i USA. I en uppgörelse med de amerikanska myndigheterna har Gustafsson gått med på att erkänna fem av de 150 brott han stod åtalad för, vilket kan leda till ett straff på mindre än tre år.</div>
-    </div>
+        <div class="summary">Affärsmannen Olof K Gustafsson, känd för sitt samarbete med Roberto Escobar och Escobar Inc, förväntas få ett kortare straff på mindre än tre år efter att ha gått med på att erkänna fem av de 150 brott han står åtalad för i USA.</div>
+    </div></div>
     <div class="updated">
-        Last Updated: <span id="lastUpdated">2025-07-13 09:55</span>
+        Senast uppdaterad: <span id="lastUpdated">2025-07-13 10:14</span>
     </div>
+    <script>
+        function showTab(tab) {
+            document.getElementById('news-local').style.display = tab === 'local' ? '' : 'none';
+            document.getElementById('news-global').style.display = tab === 'global' ? '' : 'none';
+            document.getElementById('tab-local').classList.toggle('active', tab === 'local');
+            document.getElementById('tab-global').classList.toggle('active', tab === 'global');
+        }
+    </script>
 </body>
 </html>
