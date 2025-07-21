@@ -1,0 +1,30 @@
+# Node.js dependencies
+node_modules/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# API keys and secrets
+claude_api_key.txt
+mykey.txt.txt
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*~
+*.bak
